@@ -67,7 +67,7 @@ pip3 install xtracer
 
 
 ## Info
-Number of tracers: 1
+Number of tracers: 2
 > Tracers list:
 > * ip_trace('<target_ip>')
 > * mac_trace('<target_mac>')
