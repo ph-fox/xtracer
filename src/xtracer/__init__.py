@@ -28,7 +28,7 @@ def banner():
     print("Your Ip: {}".format(ip_address.get()))
     print("=========================|")
 
-def selections():
+def selections(trace):
     user_input = input("Select~> ")
     if(user_input == '0'):
         os._exit(0)
@@ -39,17 +39,17 @@ def selections():
         print('Error!')
         time.sleep(.3)
         clear()
-        trace.menu()
+        menu(trace)
 
 
-def menu():
+def menu(trace):
     banner()
     print("[1] ==> (IP Tracer)      ")
     print("[2] ==> ()               ")
     print("[0] ==> (Exit)           ")
     print("=========================")
     try:
-        selections()
+        selections(trace)
     except KeyboardInterrupt:
         print('Exiting..')
         os._exit(0)
@@ -75,6 +75,5 @@ class Tracer:
         return content
 
 
-if __name__=='__main__':
-    trace = Tracer()
-    menu()
+    def asdf(self):
+        pass
