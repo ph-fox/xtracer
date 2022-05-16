@@ -6,7 +6,7 @@ try:
 except ImportError:
     #print('Grant Us Root To Auto Install Required Modules!.')
     os.system('pip3 install ip_address')
-    os.system(f'python3 {os.path.basename(__file__)}')
+    os.system('python3 {}'.format(os.path.basename(__file__)))
     exit(0)
 
 def clear():
@@ -35,6 +35,9 @@ def selections(trace):
     elif(user_input == '1'):
         ip = input("Enter IP: ")
         print(trace.ip_trace(ip))
+    elif(user_input == '2'):
+        mac = input("Enter MAC: ")
+        print(trace.mac_trace(mac))
     else:
         print('Error!')
         time.sleep(.3)
@@ -45,7 +48,7 @@ def selections(trace):
 def menu(trace):
     banner()
     print("[1] ==> (IP Tracer)      ")
-    print("[2] ==> ()               ")
+    print("[2] ==> (MAC Tracer)     ")
     print("[0] ==> (Exit)           ")
     print("=========================")
     try:
@@ -56,7 +59,7 @@ def menu(trace):
 
 class Tracer:
     def ip_trace(self, ip):
-        req = requests.get(f"http://ip-api.com/json/{ip}")
+        req = requests.get("http://ip-api.com/json/{}".format(ip))
         ip_data = req.json()
         content = f"""
   IP: {ip_data['query']}
@@ -75,5 +78,16 @@ class Tracer:
         return content
 
 
-    def asdf(self):
-        pass
+    def mac_trace(self, mac):
+        req = requests.get("https://anikin-api.herokuapp.com/?mac={}".format(mac))
+        mac_data = req.json()
+        if(mac_data['status'] == 'success'):
+            content = ""
+            content+="\n Mac: {}".format(mac)
+            content+= "\n Mac Vendor: {}".format(mac_data['vendor'])
+            content+= "\n Private: {}".format(mac_data['private'])
+            return content
+        else:
+            content = ""
+            content+= "\n Err: Mac Not Found"
+            return content
