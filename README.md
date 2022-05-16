@@ -1,12 +1,13 @@
 # X-Tracer
 ## Multi Tracing Tool
 ### Example 1 for python3 file or python3 console
+#### **`ip_trace()`** Example
 ```py
 >> from xtracer import Tracer
 >> trace = Tracer()
 >> ip_info = trace.ip_trace('142.250.185.78')
 >> print(ip_info)
-IP: 142.250.185.78
+  IP: 142.250.185.78
   Country: Germany
   country code: DE
   region: HE
@@ -19,6 +20,18 @@ IP: 142.250.185.78
   as: AS15169 Google LLC
   latitude: 50.1109
   longitude: 8.68213
+>>
+```
+.
+#### **`mac_trace()`** Example
+```py
+>> from xtracer import Tracer
+>> trace = Tracer()
+>> mac_info = trace.mac_trace('00:11:22:33:44:55')
+>> print(mac_info)
+  Mac: 00:11:22:33:44:55
+  Mac Vendor: CIMSYS Inc
+  Private: No
 >>
 ```
 
@@ -37,7 +50,7 @@ X-Tracer By: Anikin Luke |
 Your Ip: 142.250.185.78
 =========================|
 [1] ==> (IP Tracer)
-[2] ==> ()
+[2] ==> (MAC Tracer)
 [0] ==> (Exit)
 =========================
 Select~>
@@ -57,3 +70,4 @@ pip3 install xtracer
 Number of tracers: 1
 > Tracers list:
 > * ip_trace('<target_ip>')
+> * mac_trace('<target_mac>')
